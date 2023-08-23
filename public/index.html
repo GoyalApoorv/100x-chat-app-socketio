@@ -1,25 +1,46 @@
-const express = require('express');
-const http = require('http');
-const socketIo = require('socket.io');
-const path = require('path'); // Import the 'path' module
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.io Chat App</title>
+</head>
+<body>
+  <h1>Socket.io Chat App</h1>
+  <div>
+    <label for="room">Room:</label>
+    <input type="text" id="room" placeholder="Enter room name">
+    <button onclick="joinRoom()">Join Room</button>
+  </div>
+  <div id="chat">
+    <ul id="messages"></ul>
+    <input id="inputMessage" autocomplete="off" /><button onclick="sendMessage()">Send</button>
+  </div>
 
-const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    const socket = io();
 
-// Serve the static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+    function joinRoom() {
+      const room = document.getElementById('room').value;
+      socket.emit('join', room);
+    }
 
-// Set up the route to serve the index.html file
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+    function sendMessage() {
+      const messageInput = document.getElementById('inputMessage');
+      const room = document.getElementById('room').value;
+      const message = messageInput.value;
+      if (message.trim() !== '') {
+        socket.emit('chat message', message, room);
+        messageInput.value = '';
+      }
+    }
 
-io.on('connection', (socket) => {
-  // Rest of your socket.io code...
-});
-
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
+    socket.on('chat message', (msg) => {
+      const messagesList = document.getElementById('messages');
+      const li = document.createElement('li');
+      li.textContent = msg;
+      messagesList.appendChild(li);
+    });
+  </script>
+</body>
+</html>
