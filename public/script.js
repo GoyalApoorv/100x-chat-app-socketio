@@ -1,7 +1,6 @@
 const socket = io();
 
 
-
 function sendMessage() {
   const messageInput = document.getElementById('inputMessage');
   const room = document.getElementById('room').value;
@@ -11,6 +10,15 @@ function sendMessage() {
     messageInput.value = '';
   }
 }
+
+
+document.getElementById('inputMessage').addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    sendMessage();
+  }
+});
+
 
 socket.on('chat message', (msg) => {
   const messagesList = document.getElementById('chat-messages');

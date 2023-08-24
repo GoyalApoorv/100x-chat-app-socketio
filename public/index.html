@@ -42,7 +42,7 @@
       overflow-y: auto;
     }
     
-    .chat-input {
+    #form {
       padding: 15px;
       display: flex;
       align-items: center;
@@ -96,10 +96,10 @@
       <div class="chat-messages" id="chat-messages">
         <!-- Messages will be added here dynamically -->
       </div>
-      <div class="chat-input">
+      <form id="form" action="">
         <input type="text" id="inputMessage" placeholder="Type a message...">
         <button id="send-button">Send</button>
-      </div>
+      </form>
     </div>
   </div>
   <script src="/socket.io/socket.io.js"></script>
