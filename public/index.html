@@ -3,84 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-  }
-  
-  .chat-app {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .sidebar {
-    width: 280px;
-    background-color: #128c7e;
-    color: #fff;
-    padding: 20px;
-  }
-  
-  .chat-container {
-    flex: 1;
-    background-color: #fff;
-    border-left: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .chat-header {
-    padding: 15px;
-    font-size: 24px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .chat-messages {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-  }
-  
-  .chat-input {
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    border-top: 1px solid #ddd;
-  }
-  
-  #message-input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    outline: none;
-  }
-  
-  #send-button {
-    margin-left: 10px;
-    padding: 10px 20px;
-    background-color: #128c7e;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+    
     .chat-app {
+      display: flex;
+      height: 100vh;
+    }
+    
+    .sidebar {
+      width: 280px;
+      background-color: #128c7e;
+      color: #fff;
+      padding: 20px;
+    }
+    
+    .chat-container {
+      flex: 1;
+      background-color: #fff;
+      border-left: 1px solid #ddd;
+      display: flex;
       flex-direction: column;
     }
-  
-    .sidebar {
-      width: 100%;
+    
+    .chat-header {
+      padding: 15px;
+      font-size: 24px;
+      border-bottom: 1px solid #ddd;
     }
-  
-    .chat-container {
-      border-left: none;
+    
+    .chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+    
+    .chat-input {
+      padding: 15px;
+      display: flex;
+      align-items: center;
       border-top: 1px solid #ddd;
     }
-  }
+    
+    #inputMessage {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      outline: none;
+      font-size: 16px; /* Increase font size for better readability */
+    }
+    
+    #send-button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #128c7e;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .chat-app {
+        flex-direction: column;
+      }
+  
+      .sidebar {
+        width: 100%;
+      }
+  
+      .chat-container {
+        border-left: none;
+        border-top: 1px solid #ddd;
+      }
+    }
   </style>
   <title>WhatsApp-Like Chat App</title>
 </head>
