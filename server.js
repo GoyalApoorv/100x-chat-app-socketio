@@ -23,8 +23,9 @@ io.on('connection', (socket) => {
     console.log(`User joined room: ${room}`);
   });
 
-  socket.on('chat message', (msg, room) => {
-    io.to(room).emit('chat message', msg);
+  socket.on('chat message', (msg) => {
+    console.log("mssnccn", msg);
+    io.emit('chat message', msg);
   });
 
   socket.on('disconnect', () => {
