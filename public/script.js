@@ -2,10 +2,14 @@ const socket = io();
 
 const messageInput = document.getElementById('inputMessage');
 const sendButton = document.getElementById('send-button');
-const message = messageInput.value;
+let message = "";
+
 
 function sendMessage() {
+  debugger;
+  message = messageInput.value;
   if (message.trim() !== '') {
+    console.log(message)
     socket.emit('chat message', message ); 
   }// Sending message and room data
   messageInput.value = '';
@@ -14,6 +18,7 @@ function sendMessage() {
 
 
 socket.on('chat message', (msg) => {
+  console.log('message', msg);
   const messagesList = document.getElementById('chat-messages');
   const div = document.createElement('div');
   div.className = 'message';
