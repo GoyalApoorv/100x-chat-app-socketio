@@ -20,10 +20,11 @@ function sendMessage() {
 
   if (modifiedMessage.trim() !== '') {
     socket.emit('chat message', modifiedMessage); 
-    messageInput.value = '';
+    messageInput.value = ''; // Clear input field after sending
   }
 }
 
+// Listen for incoming messages
 socket.on('chat message', (msg) => {
   const messagesList = document.getElementById('chat-messages');
   const div = document.createElement('div');
@@ -32,6 +33,7 @@ socket.on('chat message', (msg) => {
   messagesList.appendChild(div);
 });
 
+// Send message on Enter key press
 messageInput.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
@@ -39,6 +41,7 @@ messageInput.addEventListener('keydown', function(event) {
   }
 });
 
+// Send message on button click
 sendButton.addEventListener('click', (event) => {
   event.preventDefault();
   sendMessage();
